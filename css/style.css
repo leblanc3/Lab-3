@@ -1,0 +1,21 @@
+body {
+    background-color: black;
+}
+
+.main-navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-height: 70px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.logo {
+    height: 30px;
+    width: auto;
+}
+
+.main-navbar .nav-link {
+    font-size: 1.25rem;
+}
