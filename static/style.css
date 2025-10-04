@@ -1,0 +1,47 @@
+body {
+    background-color: black;
+}
+
+
+
+.navbar {
+    display: flex;
+    padding: 0.5rem 2rem 0.5rem 0.5rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    border-radius: 0px 0px 15px 15px;
+    align-items: center;
+}
+.navbar .nav-link {
+    font-size: 1.10rem;
+}
+
+.navbar .logo {
+
+    height: 44px;
+    width: auto;
+}
+.navbar .page-title {
+    display: block;
+}
+
+.p-3 {
+    height: 600px;
+    width: auto;
+    margin-top: 1rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+} 
+
+.p-3 img.img-fluid {
+    margin-right: 150px;
+    float: right;
+    height: 400px;
+    width: auto;
+    border-radius: 25%;
+}
+
+@media (max-width:768px ) {
+    .navbar .page-title {
+        display: none;
+}
