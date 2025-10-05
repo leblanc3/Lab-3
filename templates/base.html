@@ -3,35 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title%} {% endblock%}</title>
+    <meta name="description" content="{% block meta_description %}Portfolio website of Renier G. Dela Cruz - Aspiring cybersecurity professional and Computer Engineering student{% endblock %}">
+    <meta name="author" content="Renier G. Dela Cruz">
+    
+    <!-- Open Graph Meta Tags for social sharing -->
+    <meta property="og:title" content="{% block og_title %}My Portfolio{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Portfolio website showcasing my projects and skills{% endblock %}">
+    <meta property="og:type" content="website">
+    
+    <title>{% block title %}My Portfolio{% endblock %} | Renier Dela Cruz</title>
 
+    <!-- Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar bg-dark bg-dark.bg-gradient border-bottom border-body d-flex flex-direction-row" data-bs-theme="dark">   
-        <img class="logo " src="/static/images/logo.png" alt="Logo" />
-        <h4 class="page-title mb-0 ms-auto text-white">My Portfolio</h4>
-        <ul class="nav align-items-center mb-0 ms-auto">
+    <!-- Fixed Top Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img class="logo me-2" src="{{ url_for('static', filename='images/logo.png') }}" alt="Portfolio Logo" width="40" height="40" />
+                <span class="d-none d-md-inline">My Portfolio</span>
+            </a>
             
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/profile">Me</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/works">My Works</a>
-            </li>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/contact">Contact</a>
-            </li>
-        </ul>
+            <!-- Hamburger Toggle Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Collapsible Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'home' %}active{% endif %}" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'profile' %}active{% endif %}" href="/profile">Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'works' %}active{% endif %}" href="/works">My Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    {% block content %}{% endblock %}
+    <!-- Main Content Area (Scrollable) -->
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
     
+    <footer class="site-footer fixed-bottom">
+        <div class="container py-2">
+            <div class="row align-items-center">
+                <div class="col-lg-8 col-md-7 col-12 mb-2 mb-md-0">
+                    <p class="copyright-text mb-0">
+                        &copy; 2025 Dela Cruz, Renier G. | Academic Portfolio Project | BS CPE 2-2 | Polytechnic University of the Philippines - Sta. Mesa Campus
+                    </p>
+                </div>
+
+                <div class="col-lg-4 col-md-5 col-12 text-md-end text-center">
+                    <ul class="social-icons mb-0">
+                        <li><a class="facebook" href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="linkedin" href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>   
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
