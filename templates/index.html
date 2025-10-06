@@ -1,20 +1,14 @@
 {% extends "base.html" %}
 {% block title %} Home Page {% endblock %}
 {% block content %}
-    <div class="p-3 mb-2 bg-black text-primary-emphasis">
-
+    <div class="home-page p-3 mb-2">
         <div>
-        <img src="/static/images/Me.jpg" class="img-fluid rounded" alt="Responsive image">
+            <img src="{{ url_for('static', filename='images/Me.svg') }}" class="img-fluid rounded" alt="Renier Dela Cruz Profile Picture">
         </div>
-        
         <div class="profile-description">
-            <h1>
-                Renie G. Dela Cruz
-            </h1>
-            <h6>BS CPE 2-2</h6>
-            <p>Hello! I'm an aspiring cybersecurity professional with a passion for protecting digital systems and solving complex security challenges.</p>
+            <h3>About Me</h3>
+            <p>Aspiring cybersecurity professional with a passion for protecting digital systems and solving complex security challenges.</p>
+            <a href="/works" class="cta-button">Works</a>
         </div>
-
     </div>
-
 {% endblock %}

@@ -10,5 +10,13 @@ def index():
 def profile():
     return render_template('profile.html')
 
+@app.route('/works')
+def works():
+    return render_template('works.html')
+
+@app.route('/contacts')
+def contact():
+    return render_template('contacts.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
