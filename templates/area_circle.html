@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+    <div class="main-work1">
+        <h1 class="heading">Result</h1>
+
+            {% if result %}
+            <section class="given">
+                <p class="given-line">Given radius (R) = <span class="num">{{ result.radius }}</span></p>
+            </section>
+
+            {% endif %}
+
+            <form class="form" method="post" action="{{ url_for('area_circle') }}">
+            <div class="field">
+                <label for="radius" class="label">Radius (R)</label>
+                <input type="number" step="any" min="0" id="radius" name="radius"
+                    class="input" value="{{ radius if radius is not none else '' }}" required>
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn">Calculate</button>
+            </div>
+            </form>
+
+{% if result %}
+Converted string: {{ result }}
+{% endif %}
+  {% endblock %}
