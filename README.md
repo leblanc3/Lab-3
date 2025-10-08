@@ -1,2 +1,2 @@
-# Lab-3
-Flask-based web app showcasing modular lab exercises for Data Structures and Algorithms
+# Lab-3 - Data Structure and Algorithm
+Lab Activity: Python Flask implementation
