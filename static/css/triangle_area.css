@@ -1,0 +1,116 @@
+.main-panel{
+  max-width: 720px;
+  margin: 5rem;
+  background: var(--panel);
+  border: 1px solid var(--ring);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 18px 22px;
+}
+
+.heading{
+  margin: 0 0 10px 0;
+  padding: 8px 12px;
+  background: #3f7f24;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.given{ padding: 8px 2px 0 2px; }
+.given-line{ margin: 0 0 6px 0; font-size: 16px; }
+.num{ color:#157347; font-weight: 800; }
+
+.derivations{ margin: 6px 0 12px 0; }
+.step{ margin: 6px 0; font-size: 16px; line-height: 1.5; }
+.em{ color: var(--em); font-weight: 800; }
+
+.diagram{
+  width: 200px;
+  margin: 10px auto;
+  display: grid;
+  place-items: center;
+}
+
+.diagram svg{ width: 100%; height: auto; }
+
+.form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  align-items: end;
+}
+
+.field{ display: grid; gap: 6px; }
+.label{ font-size: 14px; color: var(--muted); }
+
+.input{
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--ring);
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  background: #fff;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.input:focus{
+  border-color: var(--accent-ring);
+  box-shadow: 0 0 0 3px rgba(34,197,94,.25);
+}
+
+.field--read{ grid-column: 1 / -1; }
+.field--read .read{
+  height: 42px;
+  padding: 0 12px;
+  border: 1px dashed var(--ring);
+  border-radius: 10px;
+  display: grid;
+  align-items: center;
+  font-weight: 700;
+  background: #7b7e81ff;
+}
+
+.actions{
+  grid-column: 1 / -1;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.btn{
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #212020ff;
+  border: 1px solid var(--accent);
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-grid;
+  place-items: center;
+  transition: filter .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.btn:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(46,125,50,.25);
+}
+
+.btn-ghost{
+  background: var(--accent-ghost);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 640px){
+  .form{ grid-template-columns: 1fr; }
+  .panel{ margin: 16px; }
+  .diagram{ width: 160px; }
+}

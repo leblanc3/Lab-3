@@ -20,11 +20,14 @@ def contact():
 
 @app.route('/works/uppercase', methods=['GET','POST'])
 def touppercase():
+    original = None
     result = None
     if request.method == 'POST':
-        input_string = request.form.get('inputString', '')
-        result = input_string.upper()
-    return render_template('touppercase.html', result=result)
+        text = request.form.get('inputString', '').strip()
+        if text:
+            result = text.upper()
+            original = text
+    return render_template('touppercase.html', result=result, original=original)
 
 @app.route('/works/circle', methods=['GET','POST'])
 def area_circle():
@@ -43,20 +46,33 @@ def area_circle():
                     radius = raw
             except ValueError:
                 pass
-    return render_template('area_circle.html',result=result)
+    return render_template('area_circle.html',result=result , radius=radius)
 
 
-@app.route('/works/triangle', methods=['GET','POST'])
+@app.route('/works/triangle', methods=['GET', 'POST'])
 def area_triangle():
+    base = None
+    height = None
     result = None
     if request.method == 'POST':
-        try:
-            b = float(request.form.get('base', 0))
-            h = float(request.form.get('height', 0))
-            result = 0.5 * b * h
-        except ValueError:
-            result = None
-    return render_template('triangle_area.html', result=result)
+        raw_base = request.form.get('base', '').strip()
+        raw_height = request.form.get('height', '').strip()
+        if raw_base and raw_height:
+            try:
+                b = float(raw_base)
+                h = float(raw_height)
+                if b >= 0 and h >= 0:
+                    a = 0.5 * b * h
+                    result = {
+                        "base": round(b, 10),
+                        "height": round(h, 10),
+                        "area": round(a, 10),
+                    }
+                    base = raw_base
+                    height = raw_height
+            except ValueError:
+                pass
+    return render_template('area_triangle.html', result=result, base=base, height=height)
 
 if __name__ == '__main__':
     app.run(debug=True)

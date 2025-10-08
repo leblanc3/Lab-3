@@ -1,6 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Area of Circle {% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/touppercase.css') }}">
+{% endblock %}
 
+{% block content %}
+    <div class="panel">
+        <h1 class="heading">Uppercase Your Text!</h1>
 
+        <form class="form" method="post" action="{{ url_for('touppercase') }}">
+        <div class="field">
+            <label for="inputString" class="label">Enter text to convert</label>
+            <textarea id="inputString" name="inputString" rows="6" class="textarea" 
+                    placeholder="Type or paste your text here..." required>{{ original if original else '' }}</textarea>
+        </div>
 
-{% if result %}
-Converted string: {{ result }}
-{% endif %}
+        <div class="field field--read">
+            <label class="label">Uppercase result</label>
+            <textarea class="textarea read" rows="6" readonly>{{ result if result else '' }}</textarea>
+        </div>
+
+        <div class="actions">
+            <button type="submit" class="btn">Convert to Uppercase</button>
+            <a class="btn btn-ghost" href="{{ url_for('touppercase') }}">Clear</a>
+        </div>
+        </form>
+    </div>
+{% endblock %}

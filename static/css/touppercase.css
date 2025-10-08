@@ -1,0 +1,118 @@
+.panel{
+  max-width: 720px;
+  margin: 24px auto;
+  background: var(--panel);
+  border: 1px solid var(--ring);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 18px 22px;
+}
+
+.heading{
+  margin: 0 0 10px 0;
+  padding: 8px 12px;
+  background: #3f7f24;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.text-box{
+  padding: 12px;
+  border: 1px solid var(--ring);
+  border-radius: 10px;
+  background: #f9fafb;
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.result-box{
+  background: #e8f5e9;
+  color: var(--em);
+  font-weight: 700;
+  border-color: #a5d6a7;
+}
+
+.form{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.field{ display: grid; gap: 6px; }
+.label{ font-size: 14px; color: var(--muted); font-weight: 600; }
+
+.textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--ring);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  line-height: 1.5;
+  outline: none;
+  background: #a2b524ff;
+  resize: vertical;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.textarea:focus{
+  border-color: var(--accent-ring);
+  box-shadow: 0 0 0 3px rgba(34,197,94,.25);
+}
+
+.textarea::placeholder{
+  color: #dcdcdcff;
+}
+
+.field--read .read{
+  background: #f9fafb;
+  border-style: dashed;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.actions{
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.btn{
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #000000ff;
+  border: 1px solid var(--accent);
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-grid;
+  place-items: center;
+  transition: filter .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.btn:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(46,125,50,.25);
+}
+
+.btn-ghost{
+  background: var(--accent-ghost);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 640px){
+  .panel{ margin: 16px; }
+  .textarea{ font-size: 14px; }
+}

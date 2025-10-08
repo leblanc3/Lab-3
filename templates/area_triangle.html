@@ -1,0 +1,63 @@
+{% extends "base.html"%}
+{% block title %} Home Page {% endblock %}
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/triangle_area.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="main-panel">
+        <h1 class="heading">Triangle Area Calculator</h1>
+
+            {% if result %}
+            <section class="given">
+                <p class="given-line">Given base (b) = <span class="num">{{ result.base }}</span></p>
+                <p class="given-line">Given height (h) = <span class="num">{{ result.height }}</span></p>
+            </section>
+
+            <section class="derivations">
+                <p class="step">
+                Area = ½ × base × height = ½ × <span class="num">{{ result.base }}</span> × <span class="num">{{ result.height }}</span> = <span class="em">{{ result.area }}</span>
+                </p>
+            </section>
+            {% endif %}
+
+            <div class="diagram">
+            <svg viewBox="0 0 200 160" aria-label="Triangle diagram" role="img">
+                <defs>
+                <pattern id="fill" patternUnits="userSpaceOnUse" width="200" height="160">
+                    <rect width="200" height="160" fill="#fde7c7"/>
+                </pattern>
+                </defs>
+                <polygon points="100,20 180,140 20,140" fill="url(#fill)" stroke="#a8a29e" stroke-width="2"/>
+                <line x1="100" y1="20" x2="100" y2="140" stroke="#2c3e50" stroke-width="2" stroke-dasharray="4"/>
+                <line x1="20" y1="140" x2="180" y2="140" stroke="#2c3e50" stroke-width="3"/>
+                <text x="105" y="85" font-size="14" font-weight="600" fill="#2c3e50">h</text>
+                <text x="95" y="155" font-size="14" font-weight="600" fill="#2c3e50">b</text>
+            </svg>
+            </div>
+
+            <form class="form" method="post" action="{{ url_for('area_triangle') }}">
+            <div class="field">
+                <label for="base" class="label">Base (b)</label>
+                <input type="number" step="any" min="0" id="base" name="base"
+                    class="input" value="{{ base if base is not none else '' }}" required>
+            </div>
+
+            <div class="field">
+                <label for="height" class="label">Height (h)</label>
+                <input type="number" step="any" min="0" id="height" name="height"
+                    class="input" value="{{ height if height is not none else '' }}" required>
+            </div>
+
+            <div class="field field--read">
+                <label class="label">Area (A)</label>
+                <output class="read">{{ result.area if result else '' }}</output>
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn">Calculate</button>
+                <a class="btn btn-ghost" href="{{ url_for('area_triangle') }}">Clear</a>
+            </div>
+            </form>
+    </div>
+
+{% endblock %}

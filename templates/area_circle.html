@@ -1,12 +1,16 @@
 {% extends "base.html" %}
-{% block title %} Home Page {% endblock %}
+{% block title %} Area of Circle {% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/area_circle.css') }}">
+{% endblock %}
 {% block content %}
+
     <div class="main-work1">
-        <h1 class="heading">Result</h1>
+        <h1 class="heading">Circle Area Calculator</h1>
 
             {% if result %}
             <section class="given">
-                <p class="given-line">Given radius (R) = <span class="num">{{ result.radius }}</span></p>
+                <p class="given-line">Given radius (R) = <span class="num">{{ radius }}&sup2 × 3.14</span></p>
             </section>
 
             {% endif %}
@@ -24,6 +28,6 @@
             </form>
 
 {% if result %}
-Converted string: {{ result }}
+Area of circle: {{ result }}
 {% endif %}
-  {% endblock %}
+{% endblock %}
